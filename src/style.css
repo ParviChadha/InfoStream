@@ -1,11 +1,11 @@
 .home-screen {
-    background-color: #f4eefff7;
+    background-color: #F4EEFF;
     border: 1px solid;
     border-color: #000000;
-    height: 1044px;
+    height: 100vh;
     overflow: hidden;
     position: relative;
-    width: 1440px;
+    width: 100vw;
   }
   
   .home-screen .overlap {
