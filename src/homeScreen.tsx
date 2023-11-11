@@ -2,8 +2,9 @@ import './style2.css';
 
 function App(){
     return (
-        <body style = {bodyStyle}>
-        </body>
+        <div>
+            
+        </div>
     );
 }
 export default App;
