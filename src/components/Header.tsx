@@ -5,7 +5,7 @@ const Header = () => {
     <header>
       <div className="nav-area">
         <a href="/" className="logo">
-          Infostream
+          InfoStream
         </a>
         <Navbar />
       </div>
