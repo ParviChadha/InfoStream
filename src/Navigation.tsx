@@ -10,7 +10,7 @@ const Navigation = () => {
         <Router>
             <Header />
             <Routes>
-                {/* <Route path='/' element={<HomeScreen />} */}
+                <Route path='/' element={<HomeScreen />} />
                 <Route path='/business' element={<Business />} />
             </Routes>
         </Router>
