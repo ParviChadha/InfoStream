@@ -24,20 +24,8 @@ export const menuItems = [
         url: 'technology',
       },
       {
-        title: 'General',
-        url: 'general',
-      },
-      {
-        title: 'Health',
-        url: 'health',
-      },
-      {
         title: 'Science',
         url: 'science',
-      },
-      {
-        title: 'Sports',
-        url: 'sports',
       },
     ],
   },
