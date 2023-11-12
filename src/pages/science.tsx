@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../style.css'
 
 const Science: React.FC = () => {
     const [scienceArticles, setScienceArticles] = useState<any[]>([]);
@@ -17,7 +18,7 @@ const Science: React.FC = () => {
     }, []);
 
     return (
-        <div>
+        <div className='backGround'>
             <h2>Science Page</h2>
             <ul>
                 {scienceArticles.map((article: any, index: number) => (

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../style.css'
 
 const HomeScreen: React.FC = () => {
     const [topHeadlines, setTopHeadlines] = useState<any[]>([]);
@@ -14,7 +15,7 @@ const HomeScreen: React.FC = () => {
             });
     }, []);
     return (
-        <div>
+        <div className='backGround'>
             <h2>Top News:</h2>
             <ul>
                 {topHeadlines.map((article: any, index: number) => (

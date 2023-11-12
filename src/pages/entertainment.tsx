@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../style.css'
 
 const Entertainment: React.FC = () => {
     const [entertainmentArticles, setEntertainmentArticles] = useState<any[]>([]);
@@ -17,7 +18,7 @@ const Entertainment: React.FC = () => {
     }, []);
 
     return (
-        <div>
+        <div className='backGround'>
             <h2>Entertainment Page</h2>
             <ul>
                 {entertainmentArticles.map((article: any, index: number) => (
