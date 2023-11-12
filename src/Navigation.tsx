@@ -7,6 +7,7 @@ import HomeScreen from './pages/homescreen';
 import Entertainment from './pages/entertainment';
 import Technology from './pages/technology';
 import Science from './pages/science';
+import About from './pages/about';
 
 const Navigation = () => {
     return (
@@ -18,6 +19,7 @@ const Navigation = () => {
                 <Route path='/entertainment' element={<Entertainment />} />
                 <Route path='/technology' element={<Technology />} />
                 <Route path='/science' element={<Science />} />
+                <Route path='/about' element={<About />} />
             </Routes>
         </Router>
     );
