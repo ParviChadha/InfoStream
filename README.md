@@ -1,18 +1,6 @@
-# Advanced React Starter Template
+# InfoStream website
 
-A Trends in Web Development Starter Template.
-
-This template is appropriate for:
-
--   Simple frontends
--   Demos
--   Etc.
-
-It features the following:
-
--   A dead-simple React counter app, as a starting point.
-
-It also utilizes the following core libraries:
+InfoStream is a news aggregator website. It utilizes the news api by newsapi.org. The website filters news based on the following topics: entertainment, business, technology, and science. It also utilizes the following core libraries:
 
 -   React
 -   Vite
