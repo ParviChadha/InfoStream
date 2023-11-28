@@ -8,6 +8,8 @@ import Entertainment from './pages/entertainment';
 import Technology from './pages/technology';
 import Science from './pages/science';
 import About from './pages/about';
+import Login from './pages/logins';
+import Saved from './pages/saved';
 
 const Navigation = () => {
     return (
@@ -20,6 +22,8 @@ const Navigation = () => {
                 <Route path='/technology' element={<Technology />} />
                 <Route path='/science' element={<Science />} />
                 <Route path='/about' element={<About />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/saved' element={<Saved />} />
             </Routes>
         </Router>
     );

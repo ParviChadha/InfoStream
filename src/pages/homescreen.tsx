@@ -14,6 +14,8 @@ const HomeScreen: React.FC = () => {
                 console.log('Error fetching top headlines:', error);
             });
     }, []);
+
+    
     return (
         <div className='backGround'>
             <h2>Top News:</h2>
@@ -23,6 +25,7 @@ const HomeScreen: React.FC = () => {
                         <h3>{article.title}</h3>
                         <p>{article.description}</p>
                         <a href={article.url} target="_blank" rel="noopener noreferrer">Read more</a>
+                        <button>Add to Collection</button>
                     </li>
                 ))}
             </ul>

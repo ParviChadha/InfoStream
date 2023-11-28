@@ -33,6 +33,17 @@ export const menuItems = [
     title: 'About',
     url: '/about',
   },
+  {
+
+    title: 'Saved Articles',
+    url: '/saved',
+  },
+  {
+
+    title: 'Login',
+    url: '/login',
+  },
+
 ];
 
 const MenuItems = ({ items }) => {
