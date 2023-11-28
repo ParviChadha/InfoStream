@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../style.css'
 
+
 const HomeScreen: React.FC = () => {
     const [topHeadlines, setTopHeadlines] = useState<any[]>([]);
     useEffect(() => {
@@ -16,6 +17,7 @@ const HomeScreen: React.FC = () => {
     }, []);
 
     
+
     return (
         <div className='backGround'>
             <h2>Top News:</h2>
@@ -25,7 +27,8 @@ const HomeScreen: React.FC = () => {
                         <h3>{article.title}</h3>
                         <p>{article.description}</p>
                         <a href={article.url} target="_blank" rel="noopener noreferrer">Read more</a>
-                        <button>Add to Collection</button>
+                        <button id='addArticle'>Add to Collection</button>
+
                     </li>
                 ))}
             </ul>

@@ -1,11 +1,12 @@
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../../server/firebase-config';
+import { useState, useEffect } from "react";
+
 
 function Saved() {
-    const usersCollectionRef = collection(db, "users")
-    const savePost = async () => {
-        await addDoc(usersCollectionRef, {title, })
-    };
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        
+    }, [])
 
     return <div> 
             <h1>Saved Articles</h1>
