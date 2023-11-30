@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../style.css'
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../server/firebase-config';
-import Saved from '../pages/saved'; 
+import Saved from '../pages/saved';
+import {auth} from '../../server/firebase-config';
 
 
 const HomeScreen: React.FC = () => {
@@ -20,10 +21,12 @@ const HomeScreen: React.FC = () => {
           console.log('Error fetching top headlines:', error);
         });
     }, []);
-  
+    const currentUser = auth.currentUser;
+    const currentUserId = currentUser?.uid;
+
     const savePost = async (article) => {
       try {
-        const usersCollectionRef = collection(db, 'users');
+        const usersCollectionRef = collection(db, `users/${currentUserId}/savedArticles`);
         await addDoc(usersCollectionRef, {
           title: article.title,
           description: article.description,
