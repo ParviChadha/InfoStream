@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { db, auth } from "../../server/firebase-config";
+import { collection, getDocs, doc } from "firebase/firestore";
 
-interface SavedProps {
-  savedArticles: any[];
-}
 
-const Saved: React.FC<SavedProps> = ({ savedArticles }) => {
+const Saved: React.FC = () => {
+  const [savedArticles, setSavedArticles] = useState<any[]>([]);
+  useEffect(() => {
+    const loadSavedArticles = async () => {
+      const currentUser = auth.currentUser;
+      const currentUserId = currentUser?.uid;
+    
+      if (currentUserId) {
+        const usersCollectionRef = doc(db, 'users', currentUserId);
+        const savedArticlesCollectionRef = collection(usersCollectionRef, 'savedArticles');
+    
+        try {
+          const snapshot = await getDocs(savedArticlesCollectionRef);
+          const articles = snapshot.docs.map(doc => doc.data());
+          setSavedArticles(articles);
+        } catch (error) {
+          console.error('Error fetching saved articles:', error);
+        }
+      } else {
+        console.log('No user is currently logged in.');
+        return null;
+      }
+    };
+
+    loadSavedArticles();
+  }, []);
+
   return (
     <div>
       <h1>Saved Articles</h1>
@@ -21,6 +46,7 @@ const Saved: React.FC<SavedProps> = ({ savedArticles }) => {
           ))
         ) : (
           <p>No saved articles yet.</p>
+          
         )}
       </ul>
      
@@ -29,3 +55,6 @@ const Saved: React.FC<SavedProps> = ({ savedArticles }) => {
 };
 
 export default Saved;
+
+
+

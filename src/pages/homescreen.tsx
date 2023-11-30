@@ -56,7 +56,6 @@ const HomeScreen: React.FC = () => {
             </li>
           ))}
         </ul>
-        <Saved savedArticles={savedArticles} />
       </div>
     );
   };
