@@ -1,4 +1,4 @@
-import Navbar from './Navbar';
+import NavbarView from './Navbar';
 
 const Header = () => {
     const style = {
@@ -11,7 +11,7 @@ const Header = () => {
         <a href="/" className="logo">
           InfoStream
         </a>
-        <Navbar />
+        <NavbarView />
       </div>
     </header>
   );

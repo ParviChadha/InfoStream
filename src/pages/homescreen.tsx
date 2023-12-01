@@ -3,6 +3,12 @@ import '../style.css'
 import { addDoc, collection , arrayUnion, updateDoc, doc } from 'firebase/firestore';
 import { db } from '../../server/firebase-config';
 import {auth} from '../../server/firebase-config';
+import 'bootstrap/dist/css/bootstrap-grid.min.css';
+import Button from 'react-bootstrap/Button';
+import Stack from 'react-bootstrap/Stack';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 
 const HomeScreen: React.FC = () => {
@@ -53,22 +59,33 @@ const HomeScreen: React.FC = () => {
     
   
     return (
-      <div className='backGround'>
-        <h2>Top News:</h2>
-        <ul>
+
+      <body className = 'backGround'>
+        <h2 className = "mx-4">Top News:</h2>
+        <Stack gap={3}>
           {topHeadlines.map((article: any, index: number) => (
-            <li key={index}>
-              <h3>{article.title}</h3>
-              <p>{article.description}</p>
-              <a href={article.url} target="_blank" rel="noopener noreferrer">
-                Read more
-              </a>
-              <button onClick={() => savePost(article)}>Add to Collection</button>
-            </li>
+            <Card className="mx-4">
+              <Card.Body>
+              
+                <Card.Link href={article.url} target="_blank" rel="noopener noreferrer" className = "link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                <Card.Title> {article.title}</Card.Title>
+                </Card.Link>   
+            <Row>
+            <Col>
+              <Card.Subtitle>{article.description}</Card.Subtitle> 
+              </Col>
+              <Col>
+              <Button className ="btn float-end" onClick={() => savePost(article)}> Save</Button>
+              </Col>
+            </Row>
+             
+              
+              </Card.Body>
+            </Card>
           ))}
-        </ul>
+        </Stack>
         
-      </div>
+      </body>
     );
   };
 export default HomeScreen;

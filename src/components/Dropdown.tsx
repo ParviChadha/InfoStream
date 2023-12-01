@@ -1,5 +1,8 @@
-const Dropdown = ({ submenus, dropdown }) => {
+
+
+const Dropdown2 = ({ submenus, dropdown }) => {
   return (
+
     <ul className={`dropdown ${dropdown ? "show" : ""}`}>
       {submenus.map((submenu, index) => (
         <li key={index} className="menu-items">
@@ -10,4 +13,4 @@ const Dropdown = ({ submenus, dropdown }) => {
   );
 };
 
-export default Dropdown;
+export default Dropdown2;
