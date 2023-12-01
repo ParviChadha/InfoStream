@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { doc, getFirestore , setDoc} from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -27,23 +27,8 @@ const provider = new GoogleAuthProvider();
 export const signInWithGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
-      const user = result.user;
       const name = result.user.displayName;
       const email = result.user.email;
-
-      const usersDocRef = doc(db, "users", user.uid);
-      const userData = {
-        displayName: name ?? "Anonymous",
-        email: email ?? ""
-      };
-
-      setDoc(usersDocRef, userData)
-        .then(() => {
-          console.log("User has been added to firestore");
-        })
-        .catch((error) => {
-          console.error("Error adding user data")
-        });
 
       localStorage.setItem("name", name ?? "Anonymous")
       localStorage.setItem("email", email ?? "")
@@ -53,4 +38,5 @@ export const signInWithGoogle = () => {
 };
 
 
-export { db };
+
+export {db};
