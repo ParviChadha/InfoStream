@@ -1,4 +1,5 @@
 import NavbarView from './Navbar';
+import {auth} from '../../server/firebase-config'
 
 const Header = () => {
     const style = {
@@ -7,11 +8,12 @@ const Header = () => {
   };
   return (
     <header style = {style}>
-      <div className="nav-area">
+      <div className="navbar">
         <a href="/" className="logo">
           InfoStream
         </a>
         <NavbarView />
+        <p className='nav-item'>{auth.currentUser?.displayName}</p>
       </div>
     </header>
   );
