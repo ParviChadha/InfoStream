@@ -1,50 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { db, auth } from "../../server/firebase-config";
+import { useEffect, useState } from 'react';
+import { db } from "../../server/firebase-config";
 import { deleteDoc, doc, getDoc, updateDoc } from "firebase/firestore";
+import { useAuth } from '../auth/AuthUserProvider';
 
-const Saved: React.FC = () => {
+function Saved() {
   const [savedArticleIDs, setSavedArticleIDs] = useState<string[]>([]);
   const [savedArticles, setSavedArticles] = useState<any[]>([]);
-  const currentUser = auth.currentUser;
-  const currentUserId = currentUser?.uid;
+  const { user } = useAuth();
 
-  const deletePost = async (articleIndex: number) => {
-    console.log(savedArticleIDs[articleIndex]);
-    const articleid = savedArticleIDs[articleIndex]
-    await deleteDoc(doc(db, 'savedArticles', articleid));
-    console.log(savedArticles)
-    const updated = savedArticles.filter((article) => article.id !== articleid)
-
-    console.log('Article deleted successfully!');
-
-    setSavedArticles(updated);
-      
-    const savedRef = doc(db, 'users', currentUserId!);
-    const userDoc = await getDoc(savedRef);
-      try {
-        if (userDoc.exists()) {
-          const userData = userDoc.data();
-          const articlesArray = userData.savedArticlesArray || [];
-
-          const updated = articlesArray.filter((id: any) => id !== articleid )
-          await updateDoc(savedRef, {
-            savedArticlesArray: updated,
-          });
-          setSavedArticleIDs(updated);
-        };
-      } catch (error) {
-        console.error('error updating', error);
-      }
-  };
   useEffect(() => {
-    const fetchIDs = async () => {
-      const currentUser = auth.currentUser;
-      console.log(currentUser)
-      const currentUserId = currentUser?.uid;
-      if (currentUserId) {
-        const usersSavedRef = doc(db, 'users', currentUserId);
+    if (user) {
+      const fetchIDs = async () => {
         try {
+          const currentUserId = user.uid;
+          const usersSavedRef = doc(db, 'users', currentUserId);
           const snapshot = await getDoc(usersSavedRef);
+
           if (snapshot.exists()) {
             const userData = snapshot.data();
             const articlesArray = userData.savedArticlesArray || [];
@@ -55,13 +26,13 @@ const Saved: React.FC = () => {
         } catch (error) {
           console.error('Error fetching user document:', error);
         }
-      } else {
-        console.log('No user is currently logged in.');
-      }
-    };
+      };
 
-    fetchIDs();
-  }, []);
+      fetchIDs();
+    } else {
+      console.log('No user is currently logged in.');
+    }
+  }, [user]);
 
   useEffect(() => {
     const loadSavedArticles = async () => {
@@ -69,6 +40,7 @@ const Saved: React.FC = () => {
         const mapID = savedArticleIDs.map(async (articleID) => {
           const articleRef = doc(db, 'savedArticles', articleID);
           const article = await getDoc(articleRef);
+
           if (article.exists()) {
             return article.data();
           } else {
@@ -94,6 +66,37 @@ const Saved: React.FC = () => {
     }
   }, [savedArticleIDs]);
 
+  const deletePost = async (articleIndex: number) => {
+    if (user) {
+      const articleid = savedArticleIDs[articleIndex];
+
+      try {
+        await deleteDoc(doc(db, 'savedArticles', articleid));
+        const updated = savedArticles.filter((article) => article.id !== articleid);
+        setSavedArticles(updated);
+
+        const savedRef = doc(db, 'users', user.uid);
+        const userDoc = await getDoc(savedRef);
+
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          const articlesArray = userData.savedArticlesArray || [];
+          const updated = articlesArray.filter((id: any) => id !== articleid );
+
+          await updateDoc(savedRef, {
+            savedArticlesArray: updated,
+          });
+
+          setSavedArticleIDs(updated);
+        }
+      } catch (error) {
+        console.error('Error deleting article:', error);
+      }
+    } else {
+      console.log('No user is currently logged in.');
+    }
+  };
+
   return (
     <div>
       <h1>Saved Articles</h1>
@@ -115,6 +118,6 @@ const Saved: React.FC = () => {
       </ul>
     </div>
   );
-};
+}
 
 export default Saved;
