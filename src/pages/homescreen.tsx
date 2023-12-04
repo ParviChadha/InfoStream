@@ -76,6 +76,7 @@ const HomeScreen: React.FC = () => {
     
   
     return (
+      <div className = "backGround">
         <><h2 className="mx-4">Top News:</h2><Stack gap={3}>
         {topHeadlines.map((article: any, index: number) => (
           <Card key = {index} className="mx-4">
@@ -98,6 +99,8 @@ const HomeScreen: React.FC = () => {
           </Card>
         ))}
       </Stack></>
+      </div>
+       
     );
   };
 export default HomeScreen;

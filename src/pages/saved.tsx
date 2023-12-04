@@ -126,7 +126,9 @@ function Saved() {
             </Card>
           ))
         ) : (
-          <p className = 'text-center mb-4'>No saved articles yet.</p>
+          
+            <p className = 'text-center mb-4'>No saved articles yet.</p>
+          
         )}
       </Stack>
     
