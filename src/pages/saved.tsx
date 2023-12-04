@@ -94,6 +94,7 @@ function Saved() {
           });
 
           setSavedArticleIDs(updated);
+          alert("Article deleted succesfully!")
         }
       } catch (error) {
         console.error('Error deleting article:', error);

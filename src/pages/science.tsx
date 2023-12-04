@@ -55,7 +55,7 @@ const Science: React.FC = () => {
           url: article.url,
         });
 
-        console.log('Article saved successfully!');
+        alert('Article saved successfully!');
 
         setSavedArticles(prevSavedArticles => [...prevSavedArticles, article]);
           
