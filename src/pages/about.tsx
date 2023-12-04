@@ -10,7 +10,7 @@ import Container  from 'react-bootstrap/Container';
 const About = () => {
 
     return(
-        <body className='backGround'>
+        <div className='backGround'>
          <h2 className = " mx-4 ">About InfoStream:</h2>
             <p className="container-sm text-center "> InfoStream is a news aggregator website built on react.js. 
             It utilizes the news api by newsapi.org. The website filters news based on the following topics: 
@@ -60,7 +60,7 @@ const About = () => {
 
         </Stack>
              
-        </body>
+        </div>
         
     );
 }

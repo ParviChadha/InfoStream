@@ -30,7 +30,7 @@ const HomeScreen: React.FC = () => {
     const currentUser = auth.currentUser;
     const currentUserId = currentUser?.uid;
 
-    const savePost = async (article) => {
+    const savePost = async (article: { title: any; description: any; url: any; }) => {
       try {
         const savedCollectionRef = collection(db, `savedArticles`);
         const addSave = await addDoc(savedCollectionRef, {
@@ -59,33 +59,28 @@ const HomeScreen: React.FC = () => {
     
   
     return (
+        <><h2 className="mx-4">Top News:</h2><Stack gap={3}>
+        {topHeadlines.map((article: any, index: number) => (
+          <Card key = {index} className="mx-4">
+            <Card.Body>
 
-      <body className = 'backGround'>
-        <h2 className = "mx-4">Top News:</h2>
-        <Stack gap={3}>
-          {topHeadlines.map((article: any, index: number) => (
-            <Card key = {index} className="mx-4">
-              <Card.Body>
-              
-                <Card.Link href={article.url} target="_blank" rel="noopener noreferrer" className = "link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+              <Card.Link href={article.url} target="_blank" rel="noopener noreferrer" className = "link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
                 <Card.Title> {article.title}</Card.Title>
-                </Card.Link>   
-            <Row>
-            <Col>
-              <Card.Subtitle>{article.description}</Card.Subtitle> 
-              </Col>
-              <Col>
-              <Button className ="btn float-end" onClick={() => savePost(article)}> Save</Button>
-              </Col>
-            </Row>
-             
-              
-              </Card.Body>
-            </Card>
-          ))}
-        </Stack>
-        
-      </body>
+              </Card.Link>
+              <Row>
+                <Col>
+                  <Card.Subtitle>{article.description}</Card.Subtitle>
+                </Col>
+                <Col>
+                  <Button className ="btn float-end" onClick={() => savePost(article)}> Save</Button>
+                </Col>
+              </Row>
+
+
+            </Card.Body>
+          </Card>
+        ))}
+      </Stack></>
     );
   };
 export default HomeScreen;
