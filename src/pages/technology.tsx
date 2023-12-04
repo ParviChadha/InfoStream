@@ -14,10 +14,10 @@ import Row from 'react-bootstrap/Row';
 const Technology: React.FC = () => {
     const [technologyArticles, setTechnologyArticles] = useState<any[]>([]);
     const [savedArticles, setSavedArticles] = useState<any[]>([]);
-
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
     useEffect(() => {
-        const apiKey = 'fc86f65ced7b44e9b86c02e971b9bdfc'; // Replace with your News API key
+        const apiKey = 'fc86f65ced7b44e9b86c02e971b9bdfc'; 
 
         fetch(`https://newsapi.org/v2/top-headlines?category=technology&country=us&apiKey=${apiKey}`)
             .then(response => response.json())
@@ -27,12 +27,27 @@ const Technology: React.FC = () => {
             .catch(error => {
                 console.log('Error fetching technology articles:', error);
             });
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+          if (user) {
+              setIsLoggedIn(true);
+          } else {
+              setIsLoggedIn(false);
+          }
+        });
+
+        return () => {
+          unsubscribe();
+        };
     }, []);
 
     const currentUser = auth.currentUser;
     const currentUserId = currentUser?.uid;
 
     const savePost = async (article) => {
+      if (!isLoggedIn) {
+        alert('User is not logged in. Please log in to save articles.');
+        return;
+      };
       try {
         const savedCollectionRef = collection(db, `savedArticles`);
         const addSave = await addDoc(savedCollectionRef, {

@@ -1,12 +1,6 @@
 import NavbarView from './Navbar';
 import {auth} from '../../server/firebase-config'
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Dropdown from 'react-bootstrap/Dropdown';
-
 
 
 
@@ -19,15 +13,13 @@ const Header = () => {
   return (
     <header style = {style}>
       <div className="navbar">
-        <div className='navbar-brand'>
-          <a href="/" className="logo">
+        <a href="/" className="logo">
             InfoStream
           </a>
-        </div>
-        <div className='container'>
-          <NavbarView />
+          <div className='nav-item'>
+            <NavbarView />
+          </div>
           <p className='nav-item'>{auth.currentUser?.displayName}</p>
-        </div>
       </div>
     </header>
 
