@@ -1,11 +1,7 @@
 import { signInWithGoogle , signOut} from "../../server/firebase-config.ts";
-import React, { useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import Button from 'react-bootstrap/Button';
-import Stack from 'react-bootstrap/Stack';
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 
 type User = {
     name: string;
@@ -39,7 +35,6 @@ function Login() {
     };
     return (
         <div className="backGround"> 
-            {/*<h2 className = "mx-4">Login Page</h2>*/}
             {user ? (
                 <div className="text-center">
                     <h2 className="text-center ">Welcome, {user.name}</h2>
