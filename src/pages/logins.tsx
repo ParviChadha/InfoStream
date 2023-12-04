@@ -1,5 +1,11 @@
 import { signInWithGoogle , signOut} from "../../server/firebase-config.ts";
 import React, { useEffect, useState} from "react";
+import 'bootstrap/dist/css/bootstrap-grid.min.css';
+import Button from 'react-bootstrap/Button';
+import Stack from 'react-bootstrap/Stack';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 type User = {
     name: string;
@@ -32,12 +38,12 @@ function Login() {
         localStorage.removeItem('email');
     };
     return (
-        <div> 
-            <h1>Login Page</h1>
+        <div className="backGround"> 
+            {/*<h2 className = "mx-4">Login Page</h2>*/}
             {user ? (
-                <div>
-                    <p className="text-center mb-4">Welcome, {user.name}</p>
-                    <button onClick={handleLogoutClick}>Sign Out</button>
+                <div className="text-center">
+                    <h2 className="text-center ">Welcome, {user.name}</h2>
+                    <Button size="sm" onClick={handleLogoutClick}>Sign Out</Button>
                 </div>
             ) : (
                 <div className="container mt-5">

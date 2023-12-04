@@ -2,6 +2,12 @@ import { useEffect, useState } from 'react';
 import { db } from "../../server/firebase-config";
 import { deleteDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 import { useAuth } from '../auth/AuthUserProvider';
+import 'bootstrap/dist/css/bootstrap-grid.min.css';
+import Button from 'react-bootstrap/Button';
+import Stack from 'react-bootstrap/Stack';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 function Saved() {
   const [savedArticleIDs, setSavedArticleIDs] = useState<string[]>([]);
@@ -98,25 +104,33 @@ function Saved() {
   };
 
   return (
-    <div>
-      <h1>Saved Articles</h1>
-      <ul>
+    <body className = 'backGround'>
+      <h2 className = "mx-4">Saved Articles:</h2>
+      <Stack gap={3}>
         {savedArticles && savedArticles.length > 0 ? (
           savedArticles.map((article: any, index: number) => (
-            <li key={index}>
-              <h3>{article.title}</h3>
-              <p>{article.description}</p>
-              <a href={article.url} target="_blank" rel="noopener noreferrer">
-                Read more
-              </a>
-              <button onClick={() => deletePost(index)}>Remove from Collection</button>
-            </li>
+            <Card className="mx-4">
+              <Card.Body>
+                <Card.Link href={article.url} target="_blank" rel="noopener noreferrer">
+                <Card.Title>{article.title}</Card.Title>
+                </Card.Link>
+              <Row>
+                <Col>
+                <Card.Subtitle>{article.description}</Card.Subtitle>
+                </Col>
+                <Col>
+                <Button className="btn float-end" onClick={() => deletePost(index)}> Save</Button>
+                </Col>
+              </Row>
+              </Card.Body>
+            </Card>
           ))
         ) : (
-          <p>No saved articles yet.</p>
+          <p className = 'text-center mb-4'>No saved articles yet.</p>
         )}
-      </ul>
-    </div>
+      </Stack>
+    
+    </body>
   );
 }
 
