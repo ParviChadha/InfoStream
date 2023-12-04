@@ -104,7 +104,7 @@ function Saved() {
   };
 
   return (
-    <body className = 'backGround'>
+    <div className='background'>
       <h2 className = "mx-4">Saved Articles:</h2>
       <Stack gap={3}>
         {savedArticles && savedArticles.length > 0 ? (
@@ -130,7 +130,7 @@ function Saved() {
         )}
       </Stack>
     
-    </body>
+     </div>
   );
 }
 

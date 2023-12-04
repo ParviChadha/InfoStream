@@ -19,11 +19,15 @@ const Header = () => {
   return (
     <header style = {style}>
       <div className="navbar">
-        <a href="/" className="logo">
-          InfoStream
-        </a>
-        <NavbarView />
-        <p className='nav-item'>{auth.currentUser?.displayName}</p>
+        <div className='navbar-brand'>
+          <a href="/" className="logo">
+            InfoStream
+          </a>
+        </div>
+        <div className='container'>
+          <NavbarView />
+          <p className='nav-item'>{auth.currentUser?.displayName}</p>
+        </div>
       </div>
     </header>
 
