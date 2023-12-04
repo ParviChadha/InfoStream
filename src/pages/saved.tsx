@@ -109,7 +109,7 @@ function Saved() {
       <Stack gap={3}>
         {savedArticles && savedArticles.length > 0 ? (
           savedArticles.map((article: any, index: number) => (
-            <Card className="mx-4">
+            <Card key = {index} className="mx-4">
               <Card.Body>
                 <Card.Link href={article.url} target="_blank" rel="noopener noreferrer">
                 <Card.Title>{article.title}</Card.Title>

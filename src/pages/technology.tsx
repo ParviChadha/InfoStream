@@ -64,7 +64,7 @@ const Technology: React.FC = () => {
             <h2 className="mx-4">Technology Page</h2>
             <Stack gap={3}>
             {technologyArticles.map((article: any, index: number) => (
-            <Card className="mx-4">
+            <Card key = {index} className="mx-4">
             <Card.Body>
             <Card.Link href={article.url} target="_blank" rel="noopener noreferrer" className = "link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
          <Card.Title> {article.title}</Card.Title>
