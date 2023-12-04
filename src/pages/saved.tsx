@@ -119,7 +119,7 @@ function Saved() {
                 <Card.Subtitle>{article.description}</Card.Subtitle>
                 </Col>
                 <Col>
-                <Button className="btn float-end" onClick={() => deletePost(index)}> Save</Button>
+                <Button className="btn float-end" onClick={() => deletePost(index)}> Delete</Button>
                 </Col>
               </Row>
               </Card.Body>
