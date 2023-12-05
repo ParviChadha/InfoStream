@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import '../style.css'
 import { db } from "../../server/firebase-config";
 import { deleteDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 import { useAuth } from '../auth/AuthUserProvider';
@@ -105,7 +106,7 @@ function Saved() {
   };
 
   return (
-    <div className='background'>
+    <div className="backGround">
       <h2 className = "mx-4">Saved Articles:</h2>
       <Stack gap={3}>
         {savedArticles && savedArticles.length > 0 ? (
