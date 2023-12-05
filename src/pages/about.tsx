@@ -35,7 +35,7 @@ const About = () => {
             <div className = "my-4"></div>
             <Card  className = "mx-auto" style={{ width: '20rem' }}>
                 <Card.Body >
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src="src/assets/Aryan.png" />
                 <Card.Title> Aryan Kumar</Card.Title>
                 <Card.Text>
                     Aryan is a Freshman at Cornell University studying Computer Science.
@@ -45,7 +45,7 @@ const About = () => {
             <div className = "my-4"></div>
             <Card  className = "mx-auto" style={{ width: '20rem' }}>
                 <Card.Body >
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src="src/assets/Parvi.png" />
                 <Card.Title> Parvi Chadha</Card.Title>
                 <Card.Text>
                     Parvi is a Freshman at Cornell University studying Computer Science.
