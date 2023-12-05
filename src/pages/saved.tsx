@@ -20,6 +20,7 @@ function Saved() {
       const fetchIDs = async () => {
         try {
           const currentUserId = user.uid;
+          console.log(currentUserId);
           const usersSavedRef = doc(db, 'users', currentUserId);
           const snapshot = await getDoc(usersSavedRef);
 
