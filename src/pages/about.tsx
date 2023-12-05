@@ -15,20 +15,20 @@ const About = () => {
         <Stack >
             <Card  className = "mx-auto" style={{ width: '20rem' }}>
                 <Card.Body >
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src="src/assets/Abigail.jpg" />
                 <Card.Title> Abigail Joseph</Card.Title>
                 <Card.Text>
-                    Abigail is a Freshman at Cornell University.
+                    Abigail is a Freshman at Cornell University studying Computer Science.
                 </Card.Text>
                 </Card.Body>
             </Card>
             <div className = "my-4"></div>
             <Card  className = "mx-auto"style={{ width: '20rem' }}>
                 <Card.Body >
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src="src/assets/Danielle.jpg" />
                 <Card.Title> Danielle Imogu</Card.Title>
                 <Card.Text>
-                    Danielle is a Freshman at Cornell University.
+                    Danielle is a Freshman at Cornell University studying Computer Science.
                 </Card.Text>
                 </Card.Body>
             </Card>
@@ -38,7 +38,7 @@ const About = () => {
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Title> Aryan Kumar</Card.Title>
                 <Card.Text>
-                    Aryan is a Freshman at Cornell University.
+                    Aryan is a Freshman at Cornell University studying Computer Science.
                 </Card.Text>
                 </Card.Body>
             </Card>
@@ -48,7 +48,7 @@ const About = () => {
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Title> Parvi Chadha</Card.Title>
                 <Card.Text>
-                    Parvi is a Freshman at Cornell University.
+                    Parvi is a Freshman at Cornell University studying Computer Science.
                 </Card.Text>
                 </Card.Body>
             </Card>
