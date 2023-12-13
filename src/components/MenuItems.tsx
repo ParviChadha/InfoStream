@@ -47,7 +47,7 @@ export const menuItems = [
 
 ];
 
-const MenuItems = ({ items }) => {
+const MenuItems = ({ items }: {items: any}) => {
   const [dropdown, setDropdown] = useState(false);
   return (
     <li className="menu-items">

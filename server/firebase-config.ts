@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
-import { addDoc, collection, doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import {doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 import withFirebaseAuth from "react-with-firebase-auth";
 
 // TODO: Add SDKs for Firebase products that you want to use

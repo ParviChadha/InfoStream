@@ -43,7 +43,7 @@ const Technology: React.FC = () => {
     const currentUser = auth.currentUser;
     const currentUserId = currentUser?.uid;
 
-    const savePost = async (article) => {
+    const savePost = async (article: any) => {
       if (!isLoggedIn) {
         alert('User is not logged in. Please log in to save articles.');
         return;

@@ -1,5 +1,5 @@
 
-const Dropdown2 = ({ submenus, dropdown }) => {
+const Dropdown2 = ({ submenus, dropdown }: {submenus: any , dropdown: any}) => {
   return (
 
     <ul className={`dropdown ${dropdown ? "show" : ""}`}>
