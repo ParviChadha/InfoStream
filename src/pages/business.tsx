@@ -55,7 +55,7 @@ const Business: React.FC = () => {
           url: article.url,
         });
 
-        alert('Article saved successfully!');
+        alert('Article' + savedArticles +'saved successfully!');
 
         setSavedArticles(prevSavedArticles => [...prevSavedArticles, article]);
           
