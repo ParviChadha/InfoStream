@@ -1,16 +1,17 @@
 import { menuItems } from "./MenuItems";
 import MenuItems from './MenuItems';
 
-const Navbar = () => {
+
+const NavbarView = () => {
     return (
-      <nav>
-        <ul className="menus">
-            {menuItems.map((menu,index) => {
-              return <MenuItems items={menu} key={index} />
-            })}
+       <nav className="navbar navbar-expand-lg navbar-dark">
+         <ul className="menus">
+             {menuItems.map((menu,index) => {
+               return <MenuItems items={menu} key={index} />
+             })}
         </ul>
-      </nav>
+       </nav>
     );
   };
   
-  export default Navbar;
+  export default NavbarView;

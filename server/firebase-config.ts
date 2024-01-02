@@ -1,7 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import {doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import withFirebaseAuth from "react-with-firebase-auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -20,21 +21,53 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-const db = getFirestore();
+const db = getFirestore(app);
 
-const provider = new GoogleAuthProvider();
+const providers = {
+  googleProvider: new GoogleAuthProvider(),
+};
+
+const createComponentWithAuth = withFirebaseAuth({
+  providers,
+  firebaseAppAuth: auth,
+});
 
 export const signInWithGoogle = () => {
-  signInWithPopup(auth, provider)
-    .then((result) => {
+  signInWithPopup(auth, providers.googleProvider)
+    .then(async (result) => {
       const name = result.user.displayName;
       const email = result.user.email;
-
       localStorage.setItem("name", name ?? "Anonymous")
       localStorage.setItem("email", email ?? "")
+      const savedUserRef = doc(db, `users`, result.user.uid);
+      const user = await getDoc(savedUserRef);
+      if (user.exists()) {
+        console.log('found');
+        return;
+      } else {
+        console.log(`User with ID ${result.user.uid} not found.`);
+        try {
+          const savedUserRef = doc(db, `users`, result.user.uid);
+          await setDoc(savedUserRef, {
+            displayName: name,
+            email: email,
+            savedArticlesArray: [],
+          });
+        } catch (error) {
+          console.error('Error saving user:', error);
+        }
+      };
   }).catch((error) => {
     console.log(error);
   });
 };
 
-export {db};
+const signOutFirebase = () => {
+  signOut(auth);
+};
+
+export {
+  db,
+  createComponentWithAuth,
+  signOutFirebase as signOut,
+};

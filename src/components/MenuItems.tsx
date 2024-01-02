@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Dropdown from './Dropdown';
+import Dropdown2 from './Dropdown';
+
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const menuItems = [
@@ -46,7 +47,7 @@ export const menuItems = [
 
 ];
 
-const MenuItems = ({ items }) => {
+const MenuItems = ({ items }: {items: any}) => {
   const [dropdown, setDropdown] = useState(false);
   return (
     <li className="menu-items">
@@ -55,7 +56,7 @@ const MenuItems = ({ items }) => {
           <button type="button" aria-haspopup="menu" aria-expanded={dropdown ? "true" : "false"} onClick = {()=> setDropdown((prev) => !prev)}>
             {items.title}{' '}
           </button>
-          <Dropdown submenus={items.submenu} dropdown={dropdown}/>
+         <Dropdown2 submenus={items.submenu} dropdown={dropdown}/>
         </>
       ) : (
         <a href={items.url}>{items.title}</a>

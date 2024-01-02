@@ -1,3 +1,7 @@
 
 node_modules/
 .DS_Store
+dist/vite.svg
+dist/assets/index-9a0469d4.js
+dist/assets/index-e7d14781.css
+dist/index.html
